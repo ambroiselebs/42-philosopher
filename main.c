@@ -12,8 +12,15 @@
 
 #include "philo.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
-    ft_printf("Hello world !\n");
-    return (0);
+    t_table table;
+    
+    if (argc == 5 || argc == 6)
+    {
+
+    }
+    else
+        exit_error("Error : Wrong input");
+
 }

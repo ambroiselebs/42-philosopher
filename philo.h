@@ -19,6 +19,8 @@
 # include <sys/time.h>
 # include <limits.h>
 
+# define RST "ntm"
+
 typedef struct s_table	t_table;
 
 typedef struct s_fork
@@ -51,5 +53,7 @@ typedef struct s_table
 	t_fork	*forks;
 	t_philo	*philos;
 }	t_table;
+
+void    exit_error(char *err);
 
 #endif
