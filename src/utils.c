@@ -12,13 +12,23 @@
 
 #include "../philo.h"
 
-void    exit_error(char *err)
+void	exit_error(char *err)
 {
-    ft_printf("%s\n", err);
-    exit(EXIT_FAILURE);
+	ft_printf("%s\n", err);
+	exit(EXIT_FAILURE);
 }
 
-int skippable(char c)
+int	skippable(char c)
 {
-    return ((c >= 9 && c<= 13) || c == 32);
+	return ((c >= 9 && c <= 13) || c == 32);
+}
+
+void	*safe_malloc(size_t size)
+{
+	void	*res;
+
+	res = malloc(size);
+	if (res == NULL)
+		exit_error("Malloc error");
+	return (res);
 }

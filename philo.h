@@ -18,6 +18,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <limits.h>
+# include <errno.h>
 
 # define RST "ntm"
 
@@ -54,6 +55,27 @@ typedef struct s_table
 	t_philo	*philos;
 }	t_table;
 
-void    exit_error(char *err);
+typedef enum e_opcode
+{
+	LOCK,
+	UNLOCK,
+	INIT,
+	DESTROY,
+	CREATE,
+	JOIN,
+	DETACH
+}	t_opcode;
+
+void	exit_error(char *err);
+int		skippable(char c);
+void	*safe_malloc(size_t size);
+
+void	safe_mutex_handle(pthread_mutex_t *mutex, t_opcode opcode);
+void	safe_thread_handle(pthread_t *thread, void *(*fct)(void *),
+			void *data, t_opcode opcode);
+
+void	parse_input(t_table *table, char **argv);
+
+void	init_data(t_table *table);
 
 #endif

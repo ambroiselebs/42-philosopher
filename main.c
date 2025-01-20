@@ -14,13 +14,14 @@
 
 int main(int argc, char **argv)
 {
-    t_table table;
-    
-    if (argc == 5 || argc == 6)
-    {
+	t_table table;
 
-    }
-    else
-        exit_error("Error : Wrong input");
+	if (argc == 5 || argc == 6)
+	{
+		parse_input(&table, argv);
+		init_data(&table);
+	}
+	else
+		exit_error("Error : Wrong input");
 
 }
